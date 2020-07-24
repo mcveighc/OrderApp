@@ -1,0 +1,6 @@
+
+<div class="row">
+  <div class="col-md-3" *ngFor="let item of items">
+    <app-item [showRemoveBtn]="enableRemove" [showAddBtn]="enableAdd" [item]="item"></app-item>
+  </div>
+</div>

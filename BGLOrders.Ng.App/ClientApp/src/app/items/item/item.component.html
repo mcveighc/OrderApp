@@ -1,0 +1,11 @@
+<div class="card">
+  <!-- <img src="#" class="card-img-top" alt="#" /> -->
+  <div class="card-body">
+    <h5 class="card-title">{{ item.name }}</h5>
+    <h6 class="card-subtitle">{{ item.price | currency:'GBP' }}</h6>
+    <p class="card-text">{{ item.description }}</p>
+
+    <button *ngIf="showAddBtn" type="button" class="btn btn-link" (click)="addToCart()">Add</button>
+    <button *ngIf="showRemoveBtn" type="button" class="btn btn-link" (click)="removeFromCart()">Remove</button>
+  </div>
+</div>

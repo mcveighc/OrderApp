@@ -1,0 +1,35 @@
+<h3>Orders</h3>
+
+<ng-container *ngIf="orders; else emptyOrders;">
+  <table class="table">
+    <caption>List of orders</caption>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Order Date</th>
+        <th>Price</th>
+        <th>Status</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td scope="row">{{ order.id }}</td>
+        <td>{{ order.createdDate | date:'medium'}}</td>
+        <td>{{ order.total | currency: 'GBP' }}</td>
+        <td>Pending</td>
+        <td>
+          <button class="btn btn-link">Edit</button>
+        </td>
+        <td>
+          <button class="btn btn-link" (click)="cancelOrder(order.id)">Cancel</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
+
+<ng-template #emptyOrders>
+  You have made no orders.
+</ng-template>
