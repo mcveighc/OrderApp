@@ -10,6 +10,7 @@ Fullstack web application
 Database
 - Built code first using Entity Framework Core.
 - Migrations for InitialCreate will need to be run manually at the moment
+- Seeded items catalog
 
 API
 - Endpoints for both Orders and Order items
