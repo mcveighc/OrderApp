@@ -14,6 +14,7 @@ Database
 API
 - Endpoints for both Orders and Order items
 - Service layer and repository layers implemented
+- Unit tests for storing Order dates
 
 App
 - Angular 8, Bootstrap CSS framework
