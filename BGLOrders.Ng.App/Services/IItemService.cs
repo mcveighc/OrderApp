@@ -12,7 +12,7 @@ namespace BGLOrderApp.Services
         IEnumerable<ItemDto> GetAll();
         ItemDto GetById(int id);
         void Add(ItemDto item);
-        void Update(Item item);
+        void Update(ItemDto item);
         void Delete(int id);
     }
 }

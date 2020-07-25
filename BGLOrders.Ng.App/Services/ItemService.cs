@@ -4,7 +4,6 @@ using BGLOrderApp.Models.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace BGLOrderApp.Services
 {
@@ -36,8 +35,17 @@ namespace BGLOrderApp.Services
             _itemRepository.Create(item);
         }
 
-        public void Update(Item item)
+        public void Update(ItemDto itemDto)
         {
+            var item = new Item()
+            {
+                Id = itemDto.Id,
+                Name = itemDto.Name,
+                Description = itemDto.Description,
+                Price = itemDto.Price,
+                Status = (int)itemDto.Status
+            };
+
             _itemRepository.Update(item);
         }
 
@@ -56,7 +64,7 @@ namespace BGLOrderApp.Services
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _itemRepository.Delete(id);
         }
     }
 }
