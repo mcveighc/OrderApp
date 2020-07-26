@@ -1,5 +1,11 @@
 <h3>Item Catalog</h3>
 
-<p>Add items to your order</p>
+<ng-container *ngIf="itemCatalog; else emptyCatalog">
+  <p>Add items to your order</p>
 
-<app-item-list [enableAdd]="true" [items]="itemCatalog"></app-item-list>
+  <app-item-list [enableAdd]="true" [items]="itemCatalog"></app-item-list>
+</ng-container>
+
+<ng-template #emptyCatalog>
+  No items in the catalog.
+</ng-template>

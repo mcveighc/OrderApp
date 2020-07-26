@@ -1,4 +1,5 @@
 ﻿using BGLOrderApp.Models.Data;
+using BGLOrderApp.Models.Links;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,9 @@ namespace BGLOrderApp.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public decimal Price { get; set; }
+        public string Price { get; set; }
         public StatusType Status { get; set; }
+        public List<ILink> Links { get; set; }
 
         public static ItemDto FromDbItem(Item item)
         {
@@ -21,8 +23,9 @@ namespace BGLOrderApp.Models
                 Id = item.Id,
                 Name = item.Name,
                 Description = item.Description,
-                Price = item.Price,
-                Status = Enum.Parse<StatusType>(item.Status.ToString())
+                Price = item.Price.ToString(),
+                Status = Enum.Parse<StatusType>(item.Status.ToString()),
+                Links = item.OrderDetails.Select(od => new OrderLink(od.OrderId) as ILink).ToList()
             };
         }
 

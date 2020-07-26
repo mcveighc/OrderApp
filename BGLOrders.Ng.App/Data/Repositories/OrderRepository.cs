@@ -1,6 +1,4 @@
-﻿using BGLOrderApp.Data;
-using BGLOrderApp.Models.Data;
-using System;
+﻿using BGLOrderApp.Models.Data;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,9 +13,10 @@ namespace BGLOrderApp.Data.Repositories
             _dbContext = dbContext;
         }
 
-        public void Create(Order dborder)
+        public void Create(Order dbOrder)
         {
-            _dbContext.Add(dborder);
+            _dbContext.Orders.Add(dbOrder);
+
             _dbContext.SaveChanges();
         }
 

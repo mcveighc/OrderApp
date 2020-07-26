@@ -3,7 +3,6 @@ using BGLOrderApp.Models.Links;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace BGLOrderApp.Models
 {
@@ -14,7 +13,9 @@ namespace BGLOrderApp.Models
         public int UserId { get; set; }
         public DateTime CreatedDate { get; set; }
         public IEnumerable<OrderItemDto> Items { get; set; }
-        public IEnumerable<ILink> Links { get; set; }
+
+        // Hypermedia links for self describing API
+        public IList<ILink> Links { get; set; }
 
         public OrderDto()
         {
@@ -31,7 +32,7 @@ namespace BGLOrderApp.Models
                 UserId = dbOrder.UserId,
                 CreatedDate = dbOrder.CreatedDate.ToLocalTime(),
                 Items = dbOrder.OrderItems.Select(oi => OrderItemDto.FromDbOrderItem(oi)),
-                Links = dbOrder.OrderItems.Select(i => new ItemLink(i.ItemId))
+                Links = dbOrder.OrderItems.Select(i => new ItemLink(i.ItemId) as ILink).ToList()
             };
         }
     }

@@ -37,28 +37,13 @@ namespace BGLOrderApp.Services
 
         public void Update(ItemDto itemDto)
         {
-            var item = new Item()
-            {
-                Id = itemDto.Id,
-                Name = itemDto.Name,
-                Description = itemDto.Description,
-                Price = itemDto.Price,
-                Status = (int)itemDto.Status
-            };
-
+            var item = Item.FromItemDto(itemDto);
             _itemRepository.Update(item);
         }
 
         public void Add(ItemDto itemDto)
         {
-            var item = new Item()
-            {
-                Name = itemDto.Name,
-                Description = itemDto.Description,
-                Price = itemDto.Price,
-                Status = (int)itemDto.Status
-            };
-
+            var item = Item.FromItemDto(itemDto);
             _itemRepository.Create(item);
         }
 

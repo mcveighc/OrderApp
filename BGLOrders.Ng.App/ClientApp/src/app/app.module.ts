@@ -14,8 +14,15 @@ import { OrderListComponent } from './orders/order-list/order-list.component';
 import { ItemComponent } from './items/item/item.component';
 import { ToastrModule } from 'ngx-toastr';
 import { EditOrderComponent } from './orders/edit-order/edit-order.component';
-
+import { ItemCatalogComponent } from './items/item-catalog/item-catalog.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ItemDialogComponent } from './items/edit-item-dialog/edit-item-dialog.component';
+import { BasketComponent } from './orders/basket/basket.component'
 @NgModule({
+  entryComponents: [
+    ItemDialogComponent,
+  ],
   declarations: [
     AppComponent,
     NavMenuComponent,
@@ -25,17 +32,23 @@ import { EditOrderComponent } from './orders/edit-order/edit-order.component';
     OrderComponent,
     ItemComponent,
     OrderListComponent,
-    EditOrderComponent
+    EditOrderComponent,
+    ItemCatalogComponent,
+    ItemDialogComponent,
+    BasketComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    MatDialogModule,
+    MatInputModule,
     ToastrModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'order-list', component: OrderListComponent },
-      { path: 'order', component: OrderComponent},
+      { path: 'item-catalog', component: ItemCatalogComponent },
+      { path: 'basket', component: BasketComponent},
     ]),
     NoopAnimationsModule
   ],

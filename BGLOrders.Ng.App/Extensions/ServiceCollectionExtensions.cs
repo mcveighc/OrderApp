@@ -30,7 +30,7 @@ namespace BGLOrderApp.Extensions
 
             var connectionString = config.GetConnectionString("BGLOrders");
             // Register DBContext and setup connection pooling
-            serviceCollection.AddDbContextPool<OrdersDbContext>(opts => opts.UseSqlServer(connectionString), 10);
+            serviceCollection.AddDbContextPool<OrdersDbContext>(opts => opts.UseSqlServer(connectionString).EnableSensitiveDataLogging(), 10);
         }
     }
 }

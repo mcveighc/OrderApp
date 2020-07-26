@@ -1,0 +1,19 @@
+<h3>Basket</h3>
+
+<ng-container *ngIf="items.length; else emptyBasket">
+  <section class="row order-items">
+    <div class="col-11">
+      <app-item-list [enableRemove]="true" [items]="items"></app-item-list>
+    </div>
+  </section>
+  <section class="row">
+    <div class="col-sm">
+      <p>Total: {{ orderTotal | currency:'GBP' }}</p>
+      <button class="btn btn-link order-btn" (click)="submitOrder()">Order</button>
+    </div>
+  </section>
+</ng-container>
+
+<ng-template #emptyBasket>
+  <p>No items in the basket.</p>
+</ng-template>

@@ -1,4 +1,8 @@
+using BGLOrderApp.Auth.Authentication;
+using BGLOrderApp.Auth.Handlers;
+using BGLOrderApp.Auth.Requirements;
 using BGLOrderApp.Extensions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
@@ -22,6 +26,20 @@ namespace BGLOrders.Ng.App
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+                     
+            services.AddAuthentication("Bearer")
+                .AddScheme<BearerAuthenticationOptions, AuthenticationHandler>("Bearer", null);
+
+            services.AddSingleton<IAuthorizationHandler, ModifyItemsHandler>();
+            services.AddAuthorization(opts =>
+            {
+                opts.AddPolicy("ModifyItemsPolicy", policy =>
+                {
+                    policy.Requirements.Add(new ModifyItemsRequirement());
+                });
+            });
+
+
             services.AddApiServices();
             services.AddDataServices(Configuration);
 
@@ -55,6 +73,8 @@ namespace BGLOrders.Ng.App
             }
 
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

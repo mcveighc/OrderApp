@@ -14,7 +14,7 @@ namespace BGLOrderApp.Models
                 Id = dbOrderItem.ItemId,
                 Name = dbOrderItem.Item.Name,
                 Description = dbOrderItem.Item.Description,
-                Price = dbOrderItem.Item.Price,
+                Price = dbOrderItem.Item.Price.ToString(),
                 Quantity = dbOrderItem.ItemQuantity,
                 Status = Enum.Parse<StatusType>(dbOrderItem.Item.Status.ToString())
             };

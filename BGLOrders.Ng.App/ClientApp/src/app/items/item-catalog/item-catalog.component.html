@@ -1,0 +1,43 @@
+<h3>Items</h3>
+<p>Manage your catalog by adding, editing, or removing items.</p>
+
+<div class="row">
+  <button class="btn btn-link" (click)="addItem()">Add New</button>
+</div>
+
+<ng-container *ngIf="items; else emptyItems;">
+  <div class="row">
+
+    <table class="table">
+      <caption>List of items</caption>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Descriptiom</th>
+          <th>Price</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items">
+          <td scope="row">{{ item.id }}</td>
+          <td>{{ item.name}}</td>
+          <td>{{ item.description }}</td>
+          <td>{{ item.price | currency: 'GBP' }}</td>
+          <td>
+            <button class="btn btn-link" (click)="editItem(item)">Edit</button>
+          </td>
+          <td>
+            <button class="btn btn-link" (click)="deleteItem(item.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</ng-container>
+<ng-template #emptyItems>
+  No items to display.
+</ng-template>

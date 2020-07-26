@@ -12,13 +12,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private readonly itemService: ItemsService) { }
 
-  ngOnInit(): void {
-    this.subscribeToItems();
+  async ngOnInit() {
+    this.itemCatalog = await this.itemService.getItems();
   }
 
-  private subscribeToItems() {
-    this.itemService.getItems().subscribe(items => {
-      this.itemCatalog = items;
-    });
-  }
 }

@@ -17,8 +17,6 @@ namespace BGLOrderApp.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("Relational:Sequence:.Item_seq", "'Item_seq', '', '0', '1', '', '', 'Int32', 'False'")
-                .HasAnnotation("Relational:Sequence:.Order_seq", "'Order_seq', '', '0', '1', '', '', 'Int32', 'False'")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("BGLOrderApp.Models.Data.Item", b =>
@@ -26,7 +24,9 @@ namespace BGLOrderApp.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasDefaultValueSql("NEXT VALUE FOR Item_seq");
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -47,7 +47,7 @@ namespace BGLOrderApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 9,
+                            Id = 1,
                             Description = "Item 1 Description",
                             Name = "Item 1",
                             Price = 10.99m,
@@ -55,7 +55,7 @@ namespace BGLOrderApp.Migrations
                         },
                         new
                         {
-                            Id = 1,
+                            Id = 2,
                             Description = "Item 2 Description",
                             Name = "Item 2",
                             Price = 10.99m,
@@ -63,7 +63,7 @@ namespace BGLOrderApp.Migrations
                         },
                         new
                         {
-                            Id = 2,
+                            Id = 3,
                             Description = "Item 3 Description",
                             Name = "Item 3",
                             Price = 10.99m,
@@ -71,7 +71,7 @@ namespace BGLOrderApp.Migrations
                         },
                         new
                         {
-                            Id = 3,
+                            Id = 4,
                             Description = "Item 4 Description",
                             Name = "Item 4",
                             Price = 10.99m,
@@ -79,7 +79,7 @@ namespace BGLOrderApp.Migrations
                         },
                         new
                         {
-                            Id = 4,
+                            Id = 5,
                             Description = "Item 5 Description",
                             Name = "Item 5",
                             Price = 10.99m,
@@ -87,7 +87,7 @@ namespace BGLOrderApp.Migrations
                         },
                         new
                         {
-                            Id = 5,
+                            Id = 6,
                             Description = "Item 6 Description",
                             Name = "Item 6",
                             Price = 10.99m,
@@ -95,7 +95,7 @@ namespace BGLOrderApp.Migrations
                         },
                         new
                         {
-                            Id = 6,
+                            Id = 7,
                             Description = "Item 7 Description",
                             Name = "Item 7",
                             Price = 10.99m,
@@ -103,7 +103,7 @@ namespace BGLOrderApp.Migrations
                         },
                         new
                         {
-                            Id = 7,
+                            Id = 8,
                             Description = "Item 8 Description",
                             Name = "Item 8",
                             Price = 10.99m,
@@ -111,7 +111,7 @@ namespace BGLOrderApp.Migrations
                         },
                         new
                         {
-                            Id = 8,
+                            Id = 9,
                             Description = "Item 9 Description",
                             Name = "Item 9",
                             Price = 10.99m,
@@ -124,7 +124,9 @@ namespace BGLOrderApp.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasDefaultValueSql("NEXT VALUE FOR Order_seq");
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");

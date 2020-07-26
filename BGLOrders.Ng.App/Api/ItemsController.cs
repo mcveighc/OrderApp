@@ -1,12 +1,14 @@
 ﻿using BGLOrderApp.Models;
 using BGLOrderApp.Models.Data;
 using BGLOrderApp.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BGLOrderApp.Api
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize()]
     public class ItemsController : ControllerBase
     {
         private readonly IItemService _itemsService;
@@ -39,6 +41,7 @@ namespace BGLOrderApp.Api
 
         // POST: api/items
         [HttpPost]
+        [Authorize(Policy = "ModifyItemsPolicy")]
         public IActionResult Post([FromBody] ItemDto item)
         {
             if(ModelState.IsValid)
@@ -52,6 +55,7 @@ namespace BGLOrderApp.Api
 
         // PUT: api/items/5
         [HttpPut()]
+        [Authorize(Policy = "ModifyItemsPolicy")]
         public IActionResult Put([FromBody] ItemDto item)
         {
             if (ModelState.IsValid)

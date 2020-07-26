@@ -1,10 +1,6 @@
-﻿using BGLOrderApp.Data;
-using BGLOrderApp.Models.Data;
-using System;
+﻿using BGLOrderApp.Models.Data;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
 namespace BGLOrderApp.Data.Repositories
 {
     public class ItemRepository : IItemRepository
@@ -18,7 +14,7 @@ namespace BGLOrderApp.Data.Repositories
 
         public void Create(Item item)
         {
-            _dbContext.Items.Add(item);
+            _dbContext.Add(item);
             _dbContext.SaveChanges();
         }
 
@@ -42,6 +38,7 @@ namespace BGLOrderApp.Data.Repositories
         {
             var itemToRemove = new Item() { Id = key };
             _dbContext.Remove(itemToRemove);
+
             _dbContext.SaveChanges();
         }
 
