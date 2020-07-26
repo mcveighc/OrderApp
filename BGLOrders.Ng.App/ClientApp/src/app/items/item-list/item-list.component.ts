@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Item } from '../../models';
+import { Item, OrderItem } from '../../models';
 
 @Component({
   selector: 'app-item-list',
@@ -8,9 +8,10 @@ import { Item } from '../../models';
 })
 export class ItemListComponent {
 
+  @Input() showQuantities: boolean
   @Input() enableRemove: boolean
   @Input() enableAdd: boolean;
-  @Input() items: Item[];
+  @Input() items: Item[] | OrderItem[];
 
   constructor() { }
 }

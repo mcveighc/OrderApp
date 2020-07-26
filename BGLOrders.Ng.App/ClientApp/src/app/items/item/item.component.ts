@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Item } from 'src/app/models';
+import { Item, OrderItem } from 'src/app/models';
 import { ToastrService, IndividualConfig } from 'ngx-toastr';
 import { OrderService } from 'src/app/services/order.service';
 import { OrderItemService } from 'src/app/services/order-item.service';
@@ -11,9 +11,10 @@ import { OrderItemService } from 'src/app/services/order-item.service';
 })
 export class ItemComponent implements OnInit {
 
-  @Input() item: Item;
-  @Input() showAddBtn: boolean
-  @Input() showRemoveBtn: boolean
+  @Input() item: Item | OrderItem;
+  @Input() showAddBtn: boolean;
+  @Input() showRemoveBtn: boolean;
+  @Input() showQuantity: boolean;
 
   constructor(private readonly orderItemService: OrderItemService,
     private readonly toastService: ToastrService) { }

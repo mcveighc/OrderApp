@@ -3,9 +3,11 @@
   <div class="card-body">
     <h5 class="card-title">{{ item.name }}</h5>
     <h6 class="card-subtitle">{{ item.price | currency:'GBP' }}</h6>
-    <p class="card-text">{{ item.description }}</p>
 
-    <button *ngIf="showAddBtn" type="button" class="btn btn-link" (click)="addToCart()">Add</button>
-    <button *ngIf="showRemoveBtn" type="button" class="btn btn-link" (click)="removeFromCart()">Remove</button>
+    <p class="card-text">{{ item.description }}</p>
+    <p *ngIf="showQuantity" class="card-text">Qty: {{ item.quantity }}</p>
+
+    <button *ngIf="showAddBtn" type="button" class="btn btn-link card-btn" (click)="addToCart()">Add</button>
+    <button *ngIf="showRemoveBtn" type="button" class="btn btn-link card-btn" (click)="removeFromCart()">Remove</button>
   </div>
 </div>

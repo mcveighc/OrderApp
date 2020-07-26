@@ -46,7 +46,7 @@ export class ItemsService extends ServiceClientBase {
   }
 
   public async addItem(newItem: Item): Promise<boolean> {
-    const itemAdded = await this.post<boolean>(newItem);
+    const itemAdded = await super.post<boolean>(newItem);
 
     if (itemAdded) {
       this.items.push(newItem);

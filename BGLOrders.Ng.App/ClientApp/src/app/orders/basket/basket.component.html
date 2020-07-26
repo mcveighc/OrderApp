@@ -3,7 +3,7 @@
 <ng-container *ngIf="items.length; else emptyBasket">
   <section class="row order-items">
     <div class="col-11">
-      <app-item-list [enableRemove]="true" [items]="items"></app-item-list>
+      <app-item-list [enableRemove]="true" [showQuantities]="true" [items]="items"></app-item-list>
     </div>
   </section>
   <section class="row">

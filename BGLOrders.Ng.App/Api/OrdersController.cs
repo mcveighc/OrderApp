@@ -1,5 +1,6 @@
 ﻿using BGLOrderApp.Models;
 using BGLOrderApp.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -7,8 +8,7 @@ namespace BGLOrderApp.Api
 {
     [Route("api/[controller]")]
     [ApiController]
-    // Wold be nice to authorize requests if time allows
-    //[Authorize]
+    [Authorize()]
     public class OrdersController : ControllerBase
     {
         private readonly IOrderService _orderService;
